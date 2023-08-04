@@ -38,5 +38,5 @@
 	"remoteEnv": {
         	"PATH" : "${containerEnv:PATH}:/home/vscode/.elan/bin:/home/vscode/.local/bin"
 	},
-	"updateContentCommand": "curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain none --no-modify-path -y && lake +leanprover/lean4:nightly-2023-02-04 new modernmaths4 math && cd modernmaths4 && lake update && late exe cache get && mkdir ModernMaths4"
+	"updateContentCommand": "curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh -s -- --default-toolchain none --no-modify-path -y && lake +leanprover/lean4:nightly-2023-02-04 new modernmaths4 math && cd modernmaths4 && lake update && lake exe cache get && mkdir ModernMaths4"
 }
