@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="ascii" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Tactics &#8212; Modern Mathematics with Lean</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/proof.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/proof.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="_static/design-tabs.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Error messages" href="error_messages.html" />
+    <link rel="prev" title="Typing Lean symbols" href="typing_lean_symbols.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Modern Mathematics with Lean</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="01_Introduction.html">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="02_Expressions.html">
+   2. Expressions
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="typing_lean_symbols.html">
+   Typing Lean symbols
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Tactics
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="error_messages.html">
+   Error messages
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="genindex.html">
+   Index
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/tactics.rst.txt"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.rst</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-tactics">
+   Using tactics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tactic-glossary">
+   Tactic glossary
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Tactics</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-tactics">
+   Using tactics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tactic-glossary">
+   Tactic glossary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="tactics">
+<span id="id1"></span><h1>Tactics<a class="headerlink" href="#tactics" title="Permalink to this headline">#</a></h1>
+<p>This Appendix consists of a brief description of tactics in general before moving on
+to a drop-down <a class="reference internal" href="#tactic-glossary">Tactic glossary</a> of  particualar tactics.</p>
+<section id="using-tactics">
+<h2>Using tactics<a class="headerlink" href="#using-tactics" title="Permalink to this headline">#</a></h2>
+<p>Tactics are computer programs that produce Lean expressions. In particular, some tactics are
+used to produce <cite>proofs</cite>. They help to make proof-writing easier by providing automation of
+complex tasks or by displaying useful information to the user.</p>
+<p>A <cite>tactic block</cite> is delimited by <code class="docutils literal notranslate"><span class="pre">begin</span></code> and <code class="docutils literal notranslate"><span class="pre">end</span></code> identifiers and contains
+one or more tactics.</p>
+<p>We can prove <code class="docutils literal notranslate"><span class="pre">(a</span> <span class="pre">+</span> <span class="pre">b)</span> <span class="pre">+</span> <span class="pre">c</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">(a</span> <span class="pre">+</span> <span class="pre">c)</span></code> via a tactic block with two tactics,
+as below. The first tactic <code class="docutils literal notranslate"><span class="pre">rw</span> <span class="pre">nat.add_comm</span> <span class="pre">a</span> <span class="pre">b</span></code> transforms the target into
+one of proving <code class="docutils literal notranslate"><span class="pre">(b</span> <span class="pre">+</span> <span class="pre">a)</span> <span class="pre">+</span> <span class="pre">c</span> <span class="pre">=</span> <span class="pre">b</span> <span class="pre">+</span> <span class="pre">(a</span> <span class="pre">+</span> <span class="pre">c)</span></code>. The goal is closed by the
+second tactic.</p>
+<p>If you click at a point within the tactic block, the Infoview window will show
+you the <cite>tactic state</cite> at that point. This displays all the goals within the proof,
+where a goal consists of (1) the context (the set of hypotheses) and (2) the target
+(that which is to be proved).</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">):</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="n">c</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">+</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">rw</span> <span class="n">nat.add_comm</span> <span class="n">a</span> <span class="n">b</span><span class="o">,</span>
+  <span class="n">rw</span> <span class="n">nat.add_assoc</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<p>A single tactic can be used to close a goal by preceding it with the <code class="docutils literal notranslate"><span class="pre">by</span></code> keyword.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">1</span> <span class="bp">+</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">10</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
+</pre></div>
+</div>
+<p>A sequence of tactics can be made into a block by enclosing them in braces:</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">a</span> <span class="n">b</span> <span class="n">c</span> <span class="o">:</span> <span class="n">&#8469;</span><span class="o">):</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">b</span><span class="o">)</span> <span class="bp">+</span> <span class="n">c</span> <span class="bp">=</span> <span class="n">b</span> <span class="bp">+</span> <span class="o">(</span><span class="n">a</span> <span class="bp">+</span> <span class="n">c</span><span class="o">)</span> <span class="o">:=</span>
+<span class="kd">by</span> <span class="o">{</span> <span class="n">rw</span> <span class="n">nat.add_comm</span> <span class="n">a</span> <span class="n">b</span><span class="o">,</span> <span class="n">rw</span> <span class="n">nat.add_assoc</span><span class="o">,</span> <span class="o">}</span>
+</pre></div>
+</div>
+</section>
+<section id="tactic-glossary">
+<h2>Tactic glossary<a class="headerlink" href="#tactic-glossary" title="Permalink to this headline">#</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+norm_num<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">norm_num</span></code> proves many numeric equations and inequalities involving addition, subtraction,
+multiplication, division, exponentiation, and congruences.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">:</span> <span class="mi">2</span> <span class="bp">&lt;</span> <span class="mi">3</span> <span class="bp">*</span> <span class="mi">6</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="mi">5</span> <span class="bp">+</span> <span class="mi">10</span> <span class="bp">=</span> <span class="mi">15</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
+
+<span class="kd">example</span> <span class="o">:</span> <span class="mi">9</span> <span class="bp">&#8800;</span> <span class="mi">4</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
+
+<span class="c1">-- Show `12` is congruent to `2` modulo `10`.</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="mi">12</span> <span class="bp">%</span> <span class="mi">10</span> <span class="bp">=</span> <span class="mi">2</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
+
+<span class="c1">-- Show that `163` is prime.</span>
+<span class="kd">example</span> <span class="o">:</span> <span class="n">nat.prime</span> <span class="mi">163</span> <span class="o">:=</span> <span class="kd">by</span> <span class="n">norm_num</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+show<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">show</span></code> is used to state or rephrase the current target of the proof.
+If the current target is to prove <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>, you can indicate this by typing</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">show</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span> <span class="bp">=</span> <span class="n">x</span> <span class="bp">+</span> <span class="n">y</span>
+</pre></div>
+</div>
+<p class="sd-card-text">More practically, <code class="docutils literal notranslate"><span class="pre">show</span></code> can be used to transform the target to a definitionally equal
+target. For example, if <code class="docutils literal notranslate"><span class="pre">f</span> <span class="pre">:</span> <span class="pre">A</span> <span class="pre">&#8594;</span> <span class="pre">B</span></code> is a function and the target is to show
+<code class="docutils literal notranslate"><span class="pre">surjective</span> <span class="pre">f</span></code>, then the target can be changed to the (definitionally equal) target</p>
+<p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">&#8704;</span> <span class="pre">(b</span> <span class="pre">:</span> <span class="pre">B),</span> <span class="pre">&#8707;</span> <span class="pre">(a</span> <span class="pre">:</span> <span class="pre">A),</span> <span class="pre">f(a)</span> <span class="pre">=</span> <span class="pre">b</span></code></p>
+<p class="sd-card-text">via</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="k">show</span> <span class="bp">&#8704;</span> <span class="o">(</span><span class="n">b</span> <span class="o">:</span> <span class="n">B</span><span class="o">),</span> <span class="bp">&#8707;</span> <span class="o">(</span><span class="n">a</span> <span class="o">:</span> <span class="n">A</span><span class="o">),</span> <span class="n">f</span><span class="o">(</span><span class="n">a</span><span class="o">)</span> <span class="bp">=</span> <span class="n">b</span>
+</pre></div>
+</div>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+sorry<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><code class="docutils literal notranslate"><span class="pre">sorry</span></code> closes the current goal while raising a warning to remind you that you need to
+supply the missing proof.</p>
+<p class="sd-card-text">If you want to prove <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">&#8594;</span> <span class="pre">(q</span> <span class="pre">&#8594;</span> <span class="pre">p)</span></code>, a natural first step is to
+<code class="docutils literal notranslate"><span class="pre">assume</span> <span class="pre">h</span> <span class="pre">:</span> <span class="pre">p</span></code>. Writing <code class="docutils literal notranslate"><span class="pre">sorry</span></code> after this step closes the goal and gives a warning.</p>
+<p class="sd-card-text">If you&#8217;d mistakenly written <code class="docutils literal notranslate"><span class="pre">assume</span> <span class="pre">h</span> <span class="pre">:</span> <span class="pre">q</span></code> instead of <code class="docutils literal notranslate"><span class="pre">assume</span> <span class="pre">h</span> <span class="pre">:</span> <span class="pre">p</span></code>, Lean would
+give an error message instead. Thus, the <code class="docutils literal notranslate"><span class="pre">sorry</span></code> tactic is used to verify that your proof
+is correct, albeit incomplete.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">:</span> <span class="n">p</span> <span class="bp">&#8594;</span> <span class="o">(</span><span class="n">q</span> <span class="bp">&#8594;</span> <span class="n">p</span><span class="o">)</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="k">assume</span> <span class="n">h</span> <span class="o">:</span> <span class="n">p</span><span class="o">,</span>
+  <span class="gr">sorry</span><span class="o">,</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Some proofs involve multiple goals. In such cases, <code class="docutils literal notranslate"><span class="pre">sorry</span></code> can be used to close any combination
+of the goals. Suppose we wish to prove <code class="docutils literal notranslate"><span class="pre">q</span> <span class="pre">&#8743;</span> <span class="pre">p</span></code> on the hypotheses <code class="docutils literal notranslate"><span class="pre">h&#8321;</span> <span class="pre">:</span> <span class="pre">p</span></code> and
+<code class="docutils literal notranslate"><span class="pre">h&#8322;</span> <span class="pre">:</span> <span class="pre">q</span></code>. We can split the goal in two: (1) to prove <code class="docutils literal notranslate"><span class="pre">q</span></code> and (2) to prove <code class="docutils literal notranslate"><span class="pre">p</span></code>.
+Each of the two goals can be closed with <code class="docutils literal notranslate"><span class="pre">sorry</span></code> until we complete the proof.</p>
+<div class="highlight-lean notranslate"><div class="highlight"><pre><span></span><span class="kd">example</span> <span class="o">(</span><span class="n">p</span> <span class="n">q</span> <span class="o">:</span> <span class="kt">Prop</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#8321;</span> <span class="o">:</span> <span class="n">p</span><span class="o">)</span> <span class="o">(</span><span class="n">h&#8322;</span> <span class="o">:</span> <span class="n">q</span><span class="o">)</span> <span class="o">:</span> <span class="n">q</span> <span class="bp">&#8743;</span> <span class="n">p</span> <span class="o">:=</span>
+<span class="kd">begin</span>
+  <span class="n">split</span><span class="o">,</span>
+  <span class="o">{</span> <span class="k">show</span> <span class="n">q</span><span class="o">,</span>
+    <span class="gr">sorry</span><span class="o">,</span> <span class="o">},</span>
+  <span class="o">{</span> <span class="k">show</span> <span class="n">p</span><span class="o">,</span>
+    <span class="gr">sorry</span><span class="o">,</span> <span class="o">},</span>
+<span class="kd">end</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+</section>
+
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="typing_lean_symbols.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Typing Lean symbols</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="error_messages.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Error messages</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Gihan Marasingha<br/>
+  
+      &copy; Copyright 2022, Gihan Marasingha.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

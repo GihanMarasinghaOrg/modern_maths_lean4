@@ -1,0 +1,44 @@
+.proof {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+  
+  /* Titles */
+  .proof .proof-title {
+    background-color: #9fb1b4;
+    border: 1px solid #86989b;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color: white;
+    padding: 0.5em;
+    }
+  
+  /* Content */
+  .proof-content {
+    border: 1px solid #9fb1b4;
+    background-color: #F5F7F9;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 1em;
+  }
+
+  .proof-content > :last-child {
+    margin-bottom: 0px;
+  }
+  
+  /* Toggle proof */
+  .proof-type-proof > .proof-title {
+      display: block;
+      clear: both;
+  }
+
+
+  
+  /*
+  .proof-type-proof > .proof-title:after {
+      content: " â–¼";
+  }
+  
+  .proof-type-proof > .proof-title.open:after {
+      content: " â–²";
+  } */
